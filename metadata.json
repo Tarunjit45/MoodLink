@@ -1,0 +1,5 @@
+{
+  "name": "MoodLink",
+  "description": "An aesthetic glassmorphic application that analyzes your Spotify playlists to reveal their unique vibe score, color palette, and poetic energy.",
+  "requestFramePermissions": []
+}
