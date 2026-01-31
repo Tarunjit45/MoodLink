@@ -8,7 +8,7 @@ export interface VibeResult {
   dominantMood: string;
 }
 
-export interface SpotifyInfo {
-  id: string;
-  type: 'playlist' | 'track' | 'album' | 'invalid';
+export interface LinkInfo {
+  url: string;
+  platform: 'spotify' | 'youtube' | 'unknown';
 }

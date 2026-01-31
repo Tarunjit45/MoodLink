@@ -5,10 +5,14 @@ import { VibeResult } from "../types";
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export async function analyzePlaylistVibe(playlistUrl: string): Promise<VibeResult> {
+  const isYouTube = playlistUrl.includes('youtube.com') || playlistUrl.includes('youtu.be');
+  const platformName = isYouTube ? 'YouTube' : 'Spotify';
+
   const response = await ai.models.generateContent({
     model: 'gemini-3-flash-preview',
-    contents: `Analyze the musical energy of this Spotify playlist link: ${playlistUrl}. 
-    Since you cannot browse it directly, imagine the vibe based on the URL text and generate a creative, aesthetic profile.`,
+    contents: `Analyze the musical energy of this ${platformName} playlist link: ${playlistUrl}. 
+    Since you cannot browse it directly, imagine the vibe based on the URL's text, identifiers, and common naming conventions for such links. 
+    Generate a creative, aesthetic profile for the mood of the music likely contained within.`,
     config: {
       responseMimeType: "application/json",
       responseSchema: {

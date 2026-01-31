@@ -2,13 +2,13 @@
 
 > **"What does your music actually look like?"**
 
-MoodLink is a premium, glassmorphic web application that utilizes the **Google Gemini API** to analyze Spotify playlists and generate a multi-sensory "Vibe Profile." It decodes the energy of your curated sounds into poetic descriptions, visual palettes, and intensity scores.
+MoodLink is a premium, glassmorphic web application that utilizes the **Google Gemini API** to analyze Spotify and YouTube playlists and generate a multi-sensory "Vibe Profile." It decodes the energy of your curated sounds into poetic descriptions, visual palettes, and intensity scores.
 
 ---
 
 ## ✨ Features
 
-- 🧠 **AI-Powered Analysis**: Leverages `gemini-3-flash-preview` to interpret playlist themes and musical energy.
+- 🧠 **Multi-Platform AI Analysis**: Leverages `gemini-3-flash-preview` to interpret both **Spotify** and **YouTube** playlist metadata.
 - 🌫️ **Glassmorphic UI**: A high-end design aesthetic using backdrop blurs, translucent layers, and radial gradients.
 - 🎨 **Dynamic Palette Generation**: Produces a set of 5 hex codes that visually represent the playlist's "soul."
 - 📊 **Energy vs. Chill Meter**: A custom-built slider that visualizes the intensity balance of your music.
@@ -44,29 +44,12 @@ MoodLink is a premium, glassmorphic web application that utilizes the **Google G
 
 ---
 
-## 🌈 Design Details
-
-MoodLink uses a "Deep Space" color palette:
-- **Background**: `#030014` (Deep obsidian)
-- **Accents**: Purple-600, Indigo-600, and Cyan-400.
-- **Glass Effect**: `rgba(255, 255, 255, 0.05)` with `blur(12px)`.
-- **Typography**: `Inter` for functional text, `Playfair Display` for poetic output.
-
----
-
-## 🛣️ Roadmap
-
-- [ ] **Real-time API Integration**: Connect to official Spotify Web API for live track metadata.
-- [ ] **Custom Backgrounds**: Background gradients that shift dynamically based on the generated palette.
-- [ ] **Audio Visualization**: Add a canvas-based visualizer that reacts to simulated beats.
-- [ ] **History**: Local storage support to save previous "Vibe Checks."
-
----
-
 ## 🛠️ Usage
 
-1. Paste a public Spotify Playlist URL (e.g., `https://open.spotify.com/playlist/...`).
+1. Paste a public Spotify or YouTube Playlist URL.
 2. Click **Vibe Check**.
 3. View your generated profile and share it with the world.
+
+---
 
 *Developed with the Google Gemini SDK for next-generation web experiences.*

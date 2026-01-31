@@ -8,7 +8,8 @@ import {
   Loader2, 
   ExternalLink,
   Github,
-  Twitter
+  Twitter,
+  Youtube
 } from 'lucide-react';
 import GlassCard from './components/GlassCard';
 import { analyzePlaylistVibe } from './services/geminiService';
@@ -21,8 +22,11 @@ const App: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const handleVibeCheck = useCallback(async () => {
-    if (!url || !url.includes('spotify.com')) {
-      setError('Please enter a valid Spotify URL');
+    const isSpotify = url.includes('spotify.com');
+    const isYoutube = url.includes('youtube.com') || url.includes('youtu.be');
+
+    if (!url || (!isSpotify && !isYoutube)) {
+      setError('Please enter a valid Spotify or YouTube URL');
       return;
     }
 
@@ -58,14 +62,19 @@ const App: React.FC = () => {
         
         {/* Header */}
         <header className="text-center space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <div className="inline-flex items-center justify-center p-3 bg-white/10 rounded-2xl mb-2 backdrop-blur-xl border border-white/20">
-            <Music className="w-8 h-8 text-purple-400" />
+          <div className="flex items-center justify-center space-x-4 mb-2">
+            <div className="p-3 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20">
+              <Music className="w-8 h-8 text-purple-400" />
+            </div>
+            <div className="p-3 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20">
+              <Youtube className="w-8 h-8 text-rose-400" />
+            </div>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-white/70">
             MoodLink
           </h1>
           <p className="text-lg text-white/50 font-light max-w-md mx-auto">
-            Decode the aesthetic soul of your Spotify playlists using generative AI.
+            Decode the aesthetic soul of your Spotify or YouTube playlists using AI.
           </p>
         </header>
 
@@ -76,7 +85,7 @@ const App: React.FC = () => {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Paste Spotify Playlist URL..."
+                  placeholder="Paste Spotify or YouTube Playlist URL..."
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:ring-2 focus:ring-purple-500/50 transition-all placeholder:text-white/20 text-lg"
@@ -84,13 +93,13 @@ const App: React.FC = () => {
                 <button
                   onClick={handleVibeCheck}
                   disabled={loading}
-                  className="absolute right-2 top-2 bottom-2 px-6 bg-white text-black font-bold rounded-xl hover:bg-purple-100 transition-all flex items-center space-x-2 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group"
+                  className="absolute right-2 top-2 bottom-2 px-4 md:px-6 bg-white text-black font-bold rounded-xl hover:bg-purple-100 transition-all flex items-center space-x-2 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group"
                 >
                   {loading ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
                   ) : (
                     <>
-                      <span>Vibe Check</span>
+                      <span className="hidden md:inline">Vibe Check</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
@@ -101,9 +110,11 @@ const App: React.FC = () => {
                   <Sparkles className="w-4 h-4" /> {error}
                 </p>
               )}
-              <p className="text-xs text-center text-white/30 uppercase tracking-widest">
-                Safe & Private • No Login Required
-              </p>
+              <div className="flex justify-center gap-4 text-xs text-white/30 uppercase tracking-widest">
+                <span>Multi-Platform Analysis</span>
+                <span>•</span>
+                <span>AI Powered</span>
+              </div>
             </GlassCard>
           </div>
         )}
@@ -112,7 +123,6 @@ const App: React.FC = () => {
         {result && (
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
             <GlassCard className="space-y-8 relative overflow-hidden">
-              {/* Background Glow based on palette */}
               <div 
                 className="absolute -top-24 -right-24 w-64 h-64 blur-[100px] opacity-20 rounded-full"
                 style={{ backgroundColor: result.palette[0] }}
@@ -123,17 +133,16 @@ const App: React.FC = () => {
                   <h2 className="text-3xl font-bold flex items-center gap-3">
                     {result.dominantMood} <span className="text-purple-400">Vibe</span>
                   </h2>
-                  <p className="text-white/50 text-sm">Playlist Analysis Complete</p>
+                  <p className="text-white/50 text-sm">Cross-Platform Analysis Complete</p>
                 </div>
                 <button 
                   onClick={() => setResult(null)}
                   className="text-xs text-white/40 hover:text-white transition-colors uppercase tracking-widest"
                 >
-                  Clear Result
+                  Analyze New Link
                 </button>
               </div>
 
-              {/* Vibe Score Slider */}
               <div className="space-y-6">
                 <div className="flex justify-between items-end text-sm font-medium">
                   <span className="text-cyan-400">{result.chillLabel}</span>
@@ -147,7 +156,6 @@ const App: React.FC = () => {
                     className="h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-cyan-500 via-purple-500 to-orange-500 shadow-[0_0_20px_rgba(168,85,247,0.5)]"
                     style={{ width: `${result.vibeScore}%` }}
                   />
-                  {/* Indicator mark */}
                   <div 
                     className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_white] transition-all duration-1000 ease-out"
                     style={{ left: `${result.vibeScore}%` }}
@@ -155,28 +163,23 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              {/* Poetic Description */}
               <div className="py-4">
                 <p className="text-2xl md:text-3xl font-serif italic text-center text-white/90 leading-relaxed px-4">
                   &ldquo;{result.poeticDescription}&rdquo;
                 </p>
               </div>
 
-              {/* Color Palette */}
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.2em] text-white/40 text-center">Aesthetic Palette</p>
                 <div className="flex justify-center gap-3">
                   {result.palette.map((color, idx) => (
-                    <div 
-                      key={idx} 
-                      className="group relative flex flex-col items-center"
-                    >
+                    <div key={idx} className="group relative flex flex-col items-center">
                       <div 
                         className="w-12 h-12 md:w-16 md:h-16 rounded-2xl shadow-lg border border-white/20 transition-transform group-hover:scale-110 group-hover:rotate-6 cursor-pointer"
                         style={{ backgroundColor: color }}
                         title={color}
                       ></div>
-                      <span className="text-[10px] text-white/20 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="text-[10px] text-white/20 mt-2 opacity-0 group-hover:opacity-100 transition-opacity uppercase font-mono">
                         {color}
                       </span>
                     </div>
@@ -184,14 +187,13 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              {/* Share */}
               <div className="pt-4 flex gap-4">
                 <button 
                   onClick={shareOnX}
                   className="flex-1 bg-white/10 hover:bg-white/20 border border-white/10 py-4 rounded-2xl flex items-center justify-center space-x-3 transition-all active:scale-95 group"
                 >
                   <Share2 className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  <span className="font-semibold">Share on X</span>
+                  <span className="font-semibold">Share Vibe</span>
                 </button>
                 <a 
                   href={url}
@@ -226,7 +228,7 @@ const App: React.FC = () => {
              <div className="absolute inset-0 border-4 border-t-purple-500 border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
              <Sparkles className="absolute inset-0 m-auto w-8 h-8 text-purple-400 animate-pulse" />
           </div>
-          <p className="text-xl font-serif italic text-white/80 animate-pulse">Consulting the soundwaves...</p>
+          <p className="text-xl font-serif italic text-white/80 animate-pulse px-4 text-center">Reading the link's metadata...</p>
         </div>
       )}
     </div>
