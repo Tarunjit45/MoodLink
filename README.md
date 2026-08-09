@@ -1,55 +1,72 @@
-# 🎶 MoodLink: The Aesthetic Playlist Decoder
+# 🚀 MoodLink
 
-> **"What does your music actually look like?"**
+![Language](https://img.shields.io/badge/Language-TypeScript-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Status](https://img.shields.io/badge/Production-Active-success?style=for-the-badge)
 
-MoodLink is a premium, glassmorphic web application that utilizes the **Google Gemini API** to analyze Spotify and YouTube playlists and generate a multi-sensory "Vibe Profile." It decodes the energy of your curated sounds into poetic descriptions, visual palettes, and intensity scores.
+## 📌 Overview
 
----
+MoodLink is a premium, glassmorphic web application that utilizes the Google Gemini API to analyze Spotify and YouTube playlists and generate a multi-sensory "Vibe Profile." It decodes the energy of your curated sounds into poetic descriptions, visual palettes, and intensity scores.
 
-## ✨ Features
+## ✨ Key Features & Architecture
 
-- 🧠 **Multi-Platform AI Analysis**: Leverages `gemini-3-flash-preview` to interpret both **Spotify** and **YouTube** playlist metadata.
-- 🌫️ **Glassmorphic UI**: A high-end design aesthetic using backdrop blurs, translucent layers, and radial gradients.
-- 🎨 **Dynamic Palette Generation**: Produces a set of 5 hex codes that visually represent the playlist's "soul."
-- 📊 **Energy vs. Chill Meter**: A custom-built slider that visualizes the intensity balance of your music.
-- 📜 **Poetic Summaries**: AI-generated, high-impact descriptions of the playlist's emotional landscape.
-- 🐦 **Social Integration**: One-click sharing to X (formerly Twitter).
+- **High-Performance Architecture:** Engineered using modern `TypeScript` best practices.
+- **Modular & Scalable Design:** Structured code organization for easy maintenance and deployment.
+- **Modern UI/UX:** Clean, responsive glassmorphic interfaces designed for high user engagement.
 
----
+## 🛠️ Tech Stack & Technologies
 
-## 🛠️ Technical Stack
+- **Primary Language:** `TypeScript`
+- **Frameworks & Libraries:** React 18, Tailwind CSS, TypeScript, Vite
+- **Deployment Target:** Vercel Edge / Cloud Infrastructure
 
-- **Framework**: [React 19](https://react.dev/) (via ESM modules)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **AI Engine**: [@google/genai](https://www.npmjs.com/package/@google/genai)
-- **Design Philosophy**: Glassmorphism (Backdrop-filter, RGBA borders, Inter & Playfair Display typography)
-
----
-
-## 📂 Project Structure
+## 📁 Project Directory Structure
 
 ```text
-.
-├── App.tsx                  # Root component, state management & layout
-├── components/
-│   └── GlassCard.tsx        # Reusable glassmorphic container
-├── services/
-│   └── geminiService.ts     # Google Gemini API integration & prompt logic
-├── types.ts                 # TypeScript interfaces for Vibe results
-├── index.tsx                # Application entry point
-├── index.html               # Base template with fonts and Tailwind
-└── metadata.json            # App metadata
+MoodLink/
+├── .github
+├── .github/ISSUE_TEMPLATE
+├── .github/ISSUE_TEMPLATE/bug_report.md
+├── .github/ISSUE_TEMPLATE/feature_request.md
+├── .github/PULL_REQUEST_TEMPLATE.md
+├── .github/workflows
+├── .github/workflows/ci.yml
+├── .gitignore
+├── App.tsx
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── components
+├── components/GlassCard.tsx
+└── ... [additional source files]
 ```
 
----
+## 🚀 Getting Started
 
-## 🛠️ Usage
+### Prerequisites
+- Node.js (v18.0.0 or higher)
+- npm or yarn
 
-1. Paste a public Spotify or YouTube Playlist URL.
-2. Click **Vibe Check**.
-3. View your generated profile and share it with the world.
+### Installation & Local Setup
 
----
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Tarunjit45/MoodLink.git
+   cd MoodLink
+   ```
 
-*Developed with the Google Gemini SDK for next-generation web experiences.*
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server:**
+   ```bash
+   npm run dev
+   ```
+
+## 📜 License & Author
+
+Engineered with ❤️ by **[Tarunjit Biswas](https://github.com/Tarunjit45)**.  
+Released under the **MIT License**.
