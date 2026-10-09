@@ -1,72 +1,97 @@
-# 🚀 MoodLink
+# 🎵 MoodLink — Multi-Sensory Playlist Vibe & Energy Analyzer
 
-![Language](https://img.shields.io/badge/Language-TypeScript-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Production-Active-success?style=for-the-badge)
+[![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org/)
+[![Google Gemini](https://img.shields.io/badge/AI-Gemini%20Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4+-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-## 📌 Overview
+**MoodLink** is a glassmorphic web application that decodes the emotional DNA of your Spotify and YouTube playlists. Powered by the **Google Gemini API**, MoodLink transforms raw song lists into a multi-sensory **"Vibe Profile"**—complete with poetic aesthetic narratives, dynamic color palettes, energy scores, and visual mood boards.
 
-MoodLink is a premium, glassmorphic web application that utilizes the Google Gemini API to analyze Spotify and YouTube playlists and generate a multi-sensory "Vibe Profile." It decodes the energy of your curated sounds into poetic descriptions, visual palettes, and intensity scores.
+---
 
-## ✨ Key Features & Architecture
+## ✨ Features
 
-- **High-Performance Codebase:** Built using `TypeScript` and modern engineering principles.
-- **Modular & Scalable Design:** Structured directory tree for seamless development and deployment.
-- **Modern Responsive Styling:** Custom UI design system engineered for mobile & desktop clarity.
+* 🎨 **Dynamic Glassmorphic Vibe Profiling:** Translates track titles, artists, and tempos into rich mood interpretations and evocative color palettes.
+* ⚡ **Energy & Intensity Scoring:** Quantitative audio metric scoring (Melancholy vs. Euphoria, Chill vs. Intense).
+* 📜 **Poetic Aesthetic Synthesizer:** Generates evocative micro-poetry and cinematic mood tags matching your current playlist rotation.
+* 🎧 **Multi-Platform Support:** Ingests Spotify playlist links and custom track lists.
 
-## 🛠️ Tech Stack & Dependencies
+---
 
-- **Core Language:** `TypeScript`
-- **Libraries & Tools:** React 18, Vite, Tailwind CSS, TypeScript
-- **Deployment Infrastructure:** Vercel Edge / Cloud Services
+## 🛠️ Architecture & Tech Stack
 
-## 📁 Architecture & File Layout
+```
+[ User inputs Playlist URL / Tracklist ]
+                   |
+                   v
++-------------------------------------------------------------+
+|                     MoodLink React Client                   |
+|          (React 18, TypeScript, Tailwind Glassmorphism)     |
++-------------------------------------------------------------+
+                   |
+                   v
++-------------------------------------------------------------+
+|                     Gemini Service Layer                    |
+|             `services/geminiService.ts`                     |
+|        Prompt Engineering for Valence, Color & Energy       |
++-------------------------------------------------------------+
+                   |
+                   v
++-------------------------------------------------------------+
+|             Interactive Vibe Profile Dashboard              |
+|        Dynamic Color Hexes, Energy Arc & Mood Card          |
++-------------------------------------------------------------+
+```
+
+* **Frontend:** React 18, TypeScript, Tailwind CSS, Lucide React.
+* **AI Engine:** Google Gemini API (`@google/genai`).
+* **Tooling:** Vite, ESLint.
+
+---
+
+## 📁 Repository Structure
 
 ```text
 MoodLink/
-├── .github
-├── .github/ISSUE_TEMPLATE
-├── .github/ISSUE_TEMPLATE/bug_report.md
-├── .github/ISSUE_TEMPLATE/feature_request.md
-├── .github/PULL_REQUEST_TEMPLATE.md
-├── .github/workflows
-├── .github/workflows/ci.yml
-├── .gitignore
-├── App.tsx
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── LICENSE
-├── README.md
-├── components
-├── components/GlassCard.tsx
-└── ... [additional codebase files]
+├── App.tsx             # Main application container & vibe display
+├── index.tsx           # React DOM root render
+├── index.html          # HTML5 entry with font & glassmorphic styles
+├── components/         # Playlist input, VibeCard, ColorPalette display
+├── services/           # Gemini API integration & prompt templates
+├── metadata.json       # Project manifest
+├── package.json        # Dependencies & scripts
+├── LICENSE             # MIT License
+└── README.md
 ```
 
-## 🚀 Quickstart & Installation
+---
 
-### Prerequisites
-- Node.js (v18.0.0 or higher)
-- npm or yarn package manager
+## 🚀 Quick Start
 
-### Setup Instructions
+### 1. Installation
+```bash
+git clone https://github.com/Tarunjit45/MoodLink.git
+cd MoodLink
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Tarunjit45/MoodLink.git
-   cd MoodLink
-   ```
+npm install
+```
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+### 2. Configure Environment
+Create a `.env` file in the root directory:
 
-3. **Launch development server:**
-   ```bash
-   npm run dev
-   ```
+```env
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
 
-## 📜 Author & License
+### 3. Run Development Server
+```bash
+npm run dev
+```
 
-Architected & Developed by **[Tarunjit Biswas](https://github.com/Tarunjit45)**.  
-Distributed under the **MIT License**.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## 📄 License
+This project is licensed under the [MIT License](LICENSE).
